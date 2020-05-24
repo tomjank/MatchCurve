@@ -146,7 +146,7 @@ namespace MatchCurve
             p2.Location = p2.Location + normalAtParameter; // move by the normalized curvature vector
             SetPointOfMatchingCurve(2, p2); // update the curve
 
-            double curvatureB1 = MatchingCurve.CurvatureAt(tM).Length; // remeasure curvature again                      
+            double curvatureB1 = MatchingCurve.CurvatureAt(tM).Length; // measure curvature again                      
             double deltaCurvature = curvatureB1 - curvatureB0; // compute the delta of both measurements
             
             // compute the required length of the curvature vector to move p2 so that both curvatures match
@@ -162,8 +162,8 @@ namespace MatchCurve
             //       Remap the length of both curvature vectors to an arbitry length
             //       Move points there, create a vector, which equals the curvature graphs tangent at t 
             //       Do the same for the matching curve. 
-            //       Move the fourth point (p3) in first in reference tangent direction and then in normal direction
-            //       until both tangents are equal. Should be linear. Do the same ration calculation as in curvature
+            //       Move the fourth point (p3), first in reference tangent direction and then in normal direction
+            //       until both tangents are equal. Should be linear?! So do the same ratio-calculation as in curvature
             //       matching operation.
             //if (this.Continuity == CONTINUITY.Curvature) return;
         }
