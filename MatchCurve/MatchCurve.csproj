@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="MatchCurve.cs" />
+    <Compile Include="CurveMatcher.cs" />
     <Compile Include="MatchCurveComponent.cs" />
     <Compile Include="MatchCurveInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

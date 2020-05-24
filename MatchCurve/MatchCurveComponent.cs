@@ -22,7 +22,7 @@ namespace MatchCurve
         {
             pManager.AddCurveParameter("Reference Curve", "Ref", "Curve to match at. It does not change the location or direction.", GH_ParamAccess.item);
             pManager.AddCurveParameter("Curve", "C", "Curve to modify in order to match to reference curve.", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Continuity", "con", "Continuity of transition 0=None,1=Pos,2=Tan,3=Cur.",GH_ParamAccess.item,3);
+            pManager.AddIntegerParameter("Continuity", "con", "Continuity of transition 0=None,1=Pos,2=Tan,3=Cur,4=Flow,5=Flow2.",GH_ParamAccess.item,3);
             pManager.AddTextParameter("___________", "__", "___________________", GH_ParamAccess.item, "");
             pManager.AddNumberParameter("Parameter", "t", "Parameter of reference to determine the point of matching.", GH_ParamAccess.item,1.0);
             pManager.AddBooleanParameter("isNormalized", "isN", "Is the parameter input normalized?", GH_ParamAccess.item, true);
@@ -75,10 +75,16 @@ namespace MatchCurve
 
             if (!DA.GetData(11,ref trim)) throw new Exception("Input <Trim> failed to collect data");
             if (!DA.GetData(12,ref join)) throw new Exception("Input <Join> failed to collect data");
-            
+
+            if (continuity < 0 || continuity > 5)
+            {
+                throw new ArgumentException("Please select a valid continuity (inbetween 0 to 5)");
+            }
+
             // Init the object doing the matching          
-            MatchCurve matcher = new MatchCurve(reference, curve);           
-            matcher.Continuity = (Enums.CONTINUITY) continuity;
+            CurveMatcher matcher = new CurveMatcher(reference, curve);
+         
+            matcher.Continuity = (Enums.CONTINUITY)continuity;
             matcher.SetMatchingLocation(t, isNormalised);
             matcher.FactorTangency = facTan;
             matcher.FactorCurvature = facCur;

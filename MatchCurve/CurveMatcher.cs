@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MatchCurve
 {
-    public class MatchCurve
+    public class CurveMatcher
     {
         private double _t = 1.0;
 
@@ -55,7 +55,7 @@ namespace MatchCurve
         /// </summary>
         /// <param name="reference"></param>
         /// <param name="matchingCurve"></param>
-        public MatchCurve(Curve reference, Curve matchingCurve)
+        public CurveMatcher(Curve reference, Curve matchingCurve)
         {
             if (reference == null) throw new ArgumentNullException("Reference curve is null.");
             if (matchingCurve == null) throw new ArgumentNullException("Matching curve is null.");
@@ -90,7 +90,10 @@ namespace MatchCurve
         /// Matches the curve to the reference curve
         /// </summary>
         public void Match()
-        {                  
+        {
+            if (this.Continuity == CONTINUITY.None)
+                return; 
+
             if (this.Continuity == CONTINUITY.Flow || this.Continuity == CONTINUITY.Flow2)
                 throw new NotSupportedException("Flow is not supported yet");
                        
