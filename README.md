@@ -9,7 +9,7 @@ It can also be made as a direct Rhino Plugin. However the native Match Curve com
 You will find a note on how to match Flow, but its not implement yet. Its not planned to actually develop further, but feel
 free to participate. If you use this for your own tools, I would be happy if you credit me.
 
-See the release folder for the .gha and a .gh file to test.
+See the 'Binary' folder for the .gha and a .gh file to test.
 
 Developed in 2017 by Tom Jankowski, made public in May 2020.
 
